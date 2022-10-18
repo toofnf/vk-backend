@@ -1,2 +1,2 @@
 # vk-backend
-vk education course, fall 2022
+vk education backend course, fall 2022
