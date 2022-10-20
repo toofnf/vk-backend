@@ -29,6 +29,15 @@ class TestTicTacGame(unittest.TestCase):
     def test_auto_pick_cell(self):
         self.assertIn(self.tic_tac.auto_pick_cell(), range(1, 10))
 
+    def test_p2p_mode(self):
+        self.assertIn(self.tic_tac.p2p_mode(), ["Draw!", "Xs win!", "Os win!"])
+
+    def test_p2c_mode(self):
+        self.assertIn(self.tic_tac.p2c_mode(), ["Draw!", "Xs win!", "Os win!"])
+
+    def test_c2c_mode(self):
+        self.assertIn(self.tic_tac.c2c_mode(), ["Draw!", "Xs win!", "Os win!"])
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -90,46 +90,54 @@ class TicTacGame:
             print("Still no clear winner...")
             return False
 
-    def start_game(self):
-        print(f'Please, choose a game mod: \n'
-              f'Enter 1 if you want to play against computer;\n'
-              f'Enter 2 if you want to play against another player.\n'
-              f'Enter any other symbols if you want to watch a game computer against computer;\n')
-        mode = int(input())
-        self.show_board()
-        if mode == 1:
-            print(f'Please choose your role:\n'
-                  f'Enter "x" if you want to play as Xs or enter any other symbols if you want to play as Os.')
-            role = input()
-            if role.lower() == "x":
-                for i in range(9):
-                    if i % 2 == 0:
-                        print("X's turn to pick a cell!")
-                        cell_num = self.pick_cell() - 1
-                        self.cells[cell_num].set_status()
-                        self.cells[cell_num].set_value("X")
-                    else:
-                        print("O's turn to pick a cell!")
-                        cell_num = self.auto_pick_cell() - 1
-                        self.cells[cell_num].set_status()
-                        self.cells[cell_num].set_value("O")
-                    self.show_board()
-                    if self.check_winner():
-                        if i % 2 == 0:
-                            return "Xs win!"
-                        else:
-                            return "Os win!"
-                return "Draw!"
+    def p2p_mode(self):
+        for i in range(9):
+            if i % 2 == 0:
+                print("X's turn to pick a cell!")
+                cell_num = self.pick_cell() - 1
+                self.cells[cell_num].set_status()
+                self.cells[cell_num].set_value("X")
             else:
                 print("O's turn to pick a cell!")
-                cell_num = self.auto_pick_cell() - 1
+                cell_num = self.pick_cell() - 1
                 self.cells[cell_num].set_status()
                 self.cells[cell_num].set_value("O")
-        elif mode == 2:
+            self.show_board()
+            if self.check_winner():
+                if i % 2 == 0:
+                    return "Xs win!"
+                else:
+                    return "Os win!"
+        return "Draw!"
+
+    def p2c_mode(self):
+        print(f'Please choose your role:\n'
+              f'Enter "x" if you want to play as Xs or enter any other symbols if you want to play as Os.')
+        role = input()
+        if role.lower() == "x":
             for i in range(9):
                 if i % 2 == 0:
                     print("X's turn to pick a cell!")
                     cell_num = self.pick_cell() - 1
+                    self.cells[cell_num].set_status()
+                    self.cells[cell_num].set_value("X")
+                else:
+                    print("O's turn to pick a cell!")
+                    cell_num = self.auto_pick_cell() - 1
+                    self.cells[cell_num].set_status()
+                    self.cells[cell_num].set_value("O")
+                self.show_board()
+                if self.check_winner():
+                    if i % 2 == 0:
+                        return "Xs win!"
+                    else:
+                        return "Os win!"
+            return "Draw!"
+        else:
+            for i in range(9):
+                if i % 2 == 0:
+                    print("X's turn to pick a cell!")
+                    cell_num = self.auto_pick_cell() - 1
                     self.cells[cell_num].set_status()
                     self.cells[cell_num].set_value("X")
                 else:
@@ -144,26 +152,40 @@ class TicTacGame:
                     else:
                         return "Os win!"
             return "Draw!"
+
+    def c2c_mode(self):
+        for i in range(9):
+            if i % 2 == 0:
+                print("X's turn to pick a cell!")
+                cell_num = self.auto_pick_cell() - 1
+                self.cells[cell_num].set_status()
+                self.cells[cell_num].set_value("X")
+            else:
+                print("O's turn to pick a cell!")
+                cell_num = self.auto_pick_cell() - 1
+                self.cells[cell_num].set_status()
+                self.cells[cell_num].set_value("O")
+            self.show_board()
+            if self.check_winner():
+                if i % 2 == 0:
+                    return "Xs win!"
+                else:
+                    return "Os win!"
+        return "Draw!"
+
+    def start_game(self):
+        print(f'Please, choose a game mod: \n'
+              f'Enter 1 if you want to play against computer;\n'
+              f'Enter 2 if you want to play against another player.\n'
+              f'Enter any other symbols if you want to watch a game computer against computer;\n')
+        mode = int(input())
+        self.show_board()
+        if mode == 1:
+            return self.p2c_mode()
+        elif mode == 2:
+            return self.p2p_mode()
         else:
-            if mode == 0:
-                for i in range(9):
-                    if i % 2 == 0:
-                        print("X's turn to pick a cell!")
-                        cell_num = self.auto_pick_cell() - 1
-                        self.cells[cell_num].set_status()
-                        self.cells[cell_num].set_value("X")
-                    else:
-                        print("O's turn to pick a cell!")
-                        cell_num = self.auto_pick_cell() - 1
-                        self.cells[cell_num].set_status()
-                        self.cells[cell_num].set_value("O")
-                    self.show_board()
-                    if self.check_winner():
-                        if i % 2 == 0:
-                            return "Xs win!"
-                        else:
-                            return "Os win!"
-                return "Draw!"
+            return self.c2c_mode()
 
 
 if __name__ == '__main__':
