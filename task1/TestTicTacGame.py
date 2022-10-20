@@ -26,6 +26,9 @@ class TestTicTacGame(unittest.TestCase):
     def test_start_game(self):
         self.assertIn(self.tic_tac.start_game(), ["Draw!", "Xs win!", "Os win!"])
 
+    def test_auto_pick_cell(self):
+        self.assertIn(self.tic_tac.auto_pick_cell(), range(1, 10))
+
 
 if __name__ == '__main__':
     unittest.main()
