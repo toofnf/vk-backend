@@ -21,29 +21,42 @@ class Cell:
 
 class TicTacGame:
     def __init__(self):
-        self.cells = [Cell("1"), Cell("2"), Cell("3"), Cell("4"), Cell("5"), Cell("6"), Cell("7"), Cell("8"), Cell("9")]
+        self.cells = [Cell("1"), Cell("2"), Cell("3"),
+                      Cell("4"), Cell("5"), Cell("6"),
+                      Cell("7"), Cell("8"), Cell("9")]
 
     def show_board(self):
         print("-" * 13)
-        print("| " + self.cells[0].value + " | " + self.cells[1].value + " | " + self.cells[2].value + " |")
+        print("| " + self.cells[0].value +
+              " | " + self.cells[1].value +
+              " | " + self.cells[2].value + " |")
         print("-" * 13)
-        print("| " + self.cells[3].value + " | " + self.cells[4].value + " | " + self.cells[5].value + " |")
+        print("| " + self.cells[3].value +
+              " | " + self.cells[4].value +
+              " | " + self.cells[5].value + " |")
         print("-" * 13)
-        print("| " + self.cells[6].value + " | " + self.cells[7].value + " | " + self.cells[8].value + " |")
+        print("| " + self.cells[6].value +
+              " | " + self.cells[7].value +
+              " | " + self.cells[8].value + " |")
         print("-" * 13)
 
     def validate_input(self, cell_num):
         if type(cell_num) != str:
-            print("Something wrong happening with your input... Please try again.")
+            print("Something wrong happening with your input... "
+                  "Please try again.")
             return False
         elif len(cell_num) != 1:
-            print("Please enter only one (!) symbol which is the number of cell you would like to pick 👉👈")
+            print("Please enter only one (!) symbol "
+                  "which is the number of cell you would like to pick 👉👈")
             return False
         elif cell_num not in "123456789":
-            print("Please enter the number (!) of cell you would like to pick 👉👈")
+            print("Please enter the number (!) of cell"
+                  " you would like to pick 👉👈")
             return False
         elif self.cells[int(cell_num) - 1].get_status() == "occupied":
-            print("Unfortunately, this cell has been already selected in this game. Please try to pick another one 👉👈")
+            print("Unfortunately, this cell has been "
+                  "already selected in this game. "
+                  "Please try to pick another one 👉👈")
             return False
         else:
             print("Your choice have been accepted.")
@@ -111,8 +124,9 @@ class TicTacGame:
         return "Draw!"
 
     def p2c_mode(self):
-        print(f'Please choose your role:\n'
-              f'Enter "x" if you want to play as Xs or enter any other symbols if you want to play as Os.')
+        print('Please choose your role:\n'
+              'Enter "x" if you want to play as Xs or '
+              'enter any other symbols if you want to play as Os.')
         role = input()
         if role.lower() == "x":
             for i in range(9):
@@ -174,10 +188,11 @@ class TicTacGame:
         return "Draw!"
 
     def start_game(self):
-        print(f'Please, choose a game mod: \n'
-              f'Enter 1 if you want to play against computer;\n'
-              f'Enter 2 if you want to play against another player.\n'
-              f'Enter any other symbols if you want to watch a game computer against computer;\n')
+        print('Please, choose a game mod: \n'
+              'Enter 1 if you want to play against computer;\n'
+              'Enter 2 if you want to play against another player.\n'
+              'Enter any other symbols if you want '
+              'to watch a game computer against computer;\n')
         mode = int(input())
         self.show_board()
         if mode == 1:
