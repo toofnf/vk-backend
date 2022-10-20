@@ -30,7 +30,10 @@ class TicTacGame:
 		print("-" * 13)
 
 	def validate_input(self, cell_num):
-		if len(cell_num) != 1:
+		if type(cell_num) != str:
+			print("Something wrong happening with your input... Please try again.")
+			return False
+		elif len(cell_num) != 1:
 			print("Please enter only one (!) symbol which is the number of cell you would like to pick 👉👈")
 			return False
 		elif cell_num not in "123456789":
