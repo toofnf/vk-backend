@@ -85,16 +85,10 @@ class TicTacGame:
         if (
                 compare_cells(self.cells[0], self.cells[1], self.cells[2]) or
                 compare_cells(self.cells[0], self.cells[3], self.cells[6]) or
-                compare_cells(self.cells[0], self.cells[4], self.cells[8])
-        ):
-            return True
-        elif (
+                compare_cells(self.cells[0], self.cells[4], self.cells[8]) or
                 compare_cells(self.cells[1], self.cells[4], self.cells[7]) or
                 compare_cells(self.cells[2], self.cells[4], self.cells[6]) or
-                compare_cells(self.cells[3], self.cells[4], self.cells[5])
-        ):
-            return True
-        elif (
+                compare_cells(self.cells[3], self.cells[4], self.cells[5]) or
                 compare_cells(self.cells[2], self.cells[5], self.cells[8]) or
                 compare_cells(self.cells[6], self.cells[7], self.cells[8])
         ):
