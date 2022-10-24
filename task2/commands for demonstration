@@ -1,0 +1,4 @@
+#open nginx.conf to start nginx
+sudo open /usr/local/etc/nginx/nginx.conf
+
+#
