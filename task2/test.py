@@ -1,6 +1,6 @@
 def app(environ, start_response):
     """Simplest possible application object"""
-    data = b'Alya is the best cat! \n She is just love of my life!\n You have seen her earlier in this screencast. \n'
+    data = b'Alya is the best cat!\n She is just love of my life!\nYou have seen her earlier in this screencast.\n'
     status = '200 OK'
     response_headers = [
         ('Content-type', 'text/plain'),

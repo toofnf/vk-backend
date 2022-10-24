@@ -6,4 +6,3 @@ gunicorn --workers=2 --reload test:app
 
 #tests
 wrk -t1 -c3000 -d30s http://localhost:8080/
-
