@@ -2,7 +2,13 @@
 sudo open /usr/local/etc/nginx/nginx.conf
 
 #gunicorn
-gunicorn --workers=2 --reload test:app
+gunicorn test:app
+
+#text for test.py
+Alya is the best cat!
 
 #tests
-wrk -t1 -c3000 -d30s http://localhost:8080/
+wrk -t1 -c1000 -d30s http://localhost:8080/
+
+#search
+запрос, чтобы показать, что ошибка не на стороне клиента
