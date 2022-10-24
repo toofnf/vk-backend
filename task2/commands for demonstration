@@ -1,4 +1,6 @@
-#open nginx.conf to start nginx
+#start nginx
 sudo open /usr/local/etc/nginx/nginx.conf
 
-#
+#gunicorn
+gunicorn --workers=2 --reload test:app
+
